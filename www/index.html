@@ -6,35 +6,76 @@
   <meta name="theme-color" content="#0f172a">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="manifest" href="manifest.json">
-  <title>PlaudApp</title>
+  <title>Plaud</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body, iframe { width: 100%; height: 100%; border: none; overflow: hidden; }
-    body { background: #0f172a; }
-    #loader {
+    html, body {
+      width: 100%; height: 100%;
+      background: #0f172a;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    #splash {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: #0f172a; z-index: 9999;
+      transition: opacity 0.4s ease-out;
+    }
+    #splash.hide { opacity: 0; pointer-events: none; }
+    .logo {
+      width: 72px; height: 72px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border-radius: 18px;
       display: flex; align-items: center; justify-content: center;
-      background: #0f172a; z-index: 9999; color: #94a3b8;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
     }
-    .spinner {
-      width: 32px; height: 32px; border: 3px solid #1e293b;
-      border-top-color: #3b82f6; border-radius: 50%; animation: spin 0.8s linear infinite;
-      margin-right: 12px;
+    .logo svg { width: 36px; height: 36px; }
+    .title {
+      color: #f8fafc; font-size: 24px; font-weight: 700;
+      letter-spacing: -0.5px; margin-bottom: 8px;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    .subtitle {
+      color: #64748b; font-size: 13px; font-weight: 400;
+      margin-bottom: 32px;
+    }
+    .progress {
+      width: 120px; height: 3px;
+      background: #1e293b; border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      width: 30%; height: 100%;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      border-radius: 2px;
+      animation: loading 1.5s ease-in-out infinite;
+    }
+    @keyframes loading {
+      0% { width: 0%; margin-left: 0; }
+      50% { width: 60%; margin-left: 20%; }
+      100% { width: 0%; margin-left: 100%; }
+    }
   </style>
 </head>
 <body>
-  <div id="loader"><div class="spinner"></div>Loading...</div>
-    <iframe id="app" src="http://134.175.249.19" allow="camera; microphone; autoplay"></iframe>
+  <div id="splash">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+      </svg>
+    </div>
+    <div class="title">Plaud</div>
+    <div class="subtitle">AI Transcription</div>
+    <div class="progress"><div class="progress-bar"></div></div>
+  </div>
   <script>
-    const iframe = document.getElementById('app');
-    const loader = document.getElementById('loader');
-    iframe.onload = () => { loader.style.display = 'none'; };
-    // Timeout: hide loader after 10s even if not loaded
-    setTimeout(() => { loader.style.display = 'none'; }, 10000);
+    // Hide splash when Capacitor WebView finishes loading remote URL
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('splash').classList.add('hide');
+      }, 800);
+    });
   </script>
 </body>
 </html>

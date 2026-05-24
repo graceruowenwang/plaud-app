@@ -1,6 +1,6 @@
 {
   "appId": "com.plaud.app",
-  "appName": "PlaudApp",
+  "appName": "Plaud",
   "webDir": "www",
   "server": {
     "url": "http://134.175.249.19",
@@ -9,5 +9,21 @@
   },
   "android": {
     "allowMixedContent": true
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "launchAutoHide": true,
+      "backgroundColor": "#0f172a",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": true,
+      "spinnerColor": "#3b82f6"
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#0f172a",
+      "overlaysWebView": false
+    }
   }
 }

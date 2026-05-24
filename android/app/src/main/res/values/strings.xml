@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">PlaudApp</string>
-    <string name="title_activity_main">PlaudApp</string>
+    <string name="app_name">Plaud</string>
+    <string name="title_activity_main">Plaud</string>
     <string name="package_name">com.plaud.app</string>
     <string name="custom_url_scheme">com.plaud.app</string>
 </resources>

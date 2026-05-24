@@ -1,1 +1,7 @@
-node_modules/\nandroid/app/build/\nandroid/.gradle/\nandroid/build/\n*.apk\n*.aab\n.capacitor/\n
+node_modules/
+android/app/build/
+android/.gradle/
+android/build/
+*.apk
+*.aab
+.capacitor/
