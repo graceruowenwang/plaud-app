@@ -3,7 +3,7 @@
   "appName": "PlaudApp",
   "webDir": "www",
   "server": {
-    "androidScheme": "https"
+    "androidScheme": "http"
   },
   "android": {
     "allowMixedContent": true
