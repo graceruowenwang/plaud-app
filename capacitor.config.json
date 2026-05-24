@@ -3,6 +3,8 @@
   "appName": "PlaudApp",
   "webDir": "www",
   "server": {
+    "url": "http://134.175.249.19",
+    "cleartext": true,
     "androidScheme": "http"
   },
   "android": {
